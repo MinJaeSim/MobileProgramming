@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mobile_SNS</string>
+    <string name="password">PASSWORD</string>
+    <string name="login">LOGIN</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="nickName">NICK NAME</string>
+</resources>

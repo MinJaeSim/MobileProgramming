@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                   android:id="@+id/activity_sns_pager_view_pager"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent">
+    <Button
+        android:id="@+id/choice_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진 고르기"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+
+    <ImageView
+        android:id="@+id/choice_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/choice_pic"
+        android:contentDescription="고른 사진"
+        />
+
+    <TextView
+        android:id="@+id/write_hash"
+        android:layout_below="@+id/choice_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="해쉬태그 작성"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+    <EditText
+        android:id="@+id/edit_hash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/write_hash"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/write_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="글 작성"
+        android:textSize="24sp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "50246869838",
+    "firebase_url": "https://mobileprogram-c7ab5.firebaseio.com",
+    "project_id": "mobileprogram-c7ab5",
+    "storage_bucket": "mobileprogram-c7ab5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50246869838:android:613607f5f9abb484",
+        "android_client_info": {
+          "package_name": "com.example.yellow7918.mobile_sns"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50246869838-7pgml4h24lhgrb1p2uhulr66eed7392g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-9DXhtebnDc5CwuF7wrkZ-x-4m_1ZjEg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
