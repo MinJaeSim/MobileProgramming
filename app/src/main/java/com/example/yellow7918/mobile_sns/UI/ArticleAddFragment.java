@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,11 +26,51 @@ import com.google.firebase.auth.FirebaseUser;
 import java.io.File;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 public class ArticleAddFragment extends Fragment {
     private ArticleModel model = new ArticleModel();
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
     private static final int CROP_FROM_IMAGE = 2;
+    private Uri imageUri;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
+        switch (requestCode) {
+            case PICK_FROM_ALBUM:
+                imageUri = data.getData();
+
+            case PICK_FROM_CAMERA:
+                Intent intent = new Intent("com.android.camera.action.CROP");
+                intent.setDataAndType(imageUri, "image/*");
+
+                intent.putExtra("outputX", 200);
+                intent.putExtra("outputY", 200);
+                intent.putExtra("aspectX", 1);
+                intent.putExtra("aspectY", 1);
+                intent.putExtra("scale", true);
+                intent.putExtra("return-data", true);
+
+                startActivityForResult(intent, CROP_FROM_IMAGE);
+                break;
+
+            case CROP_FROM_IMAGE :
+
+                Toast.makeText(getContext(),"test",Toast.LENGTH_SHORT).show();
+
+                if (resultCode != RESULT_OK) {
+                    return;
+                }
+
+        }
+    }
 
     @Nullable
     @Override
@@ -84,7 +123,7 @@ public class ArticleAddFragment extends Fragment {
                 List<User> users = UpLoader.getInstance();
                 users.add(new User(name));
 
-                model.upLoadArticle(name,tag);
+                model.upLoadArticle(name, tag);
                 getActivity().finish();
             }
         });
@@ -93,16 +132,23 @@ public class ArticleAddFragment extends Fragment {
     }
 
     private void doTakePhotoAction() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        //startActivity(intent,PICK_FROM_CAMERA);
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        String uri = "temp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+//        imageUri = FileProvider.getUriForFile(getContext(), getContext().getPackageName()+".provider",new File(Environment.getExternalStorageDirectory(),uri));
+//
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//        startActivityForResult(intent, PICK_FROM_CAMERA);
     }
 
     private void doChoicePhotoAction() {
-
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        startActivityForResult(intent, PICK_FROM_ALBUM);
     }
 
     private void doCancelAction() {
 
     }
+
+
 }
