@@ -15,7 +15,7 @@ public class UpLoader {
     private UpLoader() {
     }
 
-    public static User getArticleUploadUser(UUID id) {
+    public static User getArticleUploadUser(String id) {
         for (User user : ourInstance) {
             if (user.getId().equals(id)) return user;
         }

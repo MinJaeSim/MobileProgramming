@@ -47,9 +47,9 @@ public class ArticleModel {
         });
     }
 
-    public void upLoadArticle(String name, String tag) {
+    public void upLoadArticle(String name, String url, String tag) {
         DatabaseReference childRef = ref.push();
-        childRef.setValue(Article.newArticle(name,"",tag));
+        childRef.setValue(Article.newArticle(name, url, tag));
     }
 
     public String getName(int position) {

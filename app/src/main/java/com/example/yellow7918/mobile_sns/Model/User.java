@@ -11,7 +11,7 @@ public class User {
     private String mProfile;
     private int mFriendNumber;
     private int mTextNumber;
-    private UUID mId;
+    private String mId;
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -24,7 +24,7 @@ public class User {
         user = auth.getCurrentUser();
 
         mEmail = user.getEmail();
-        mId = UUID.randomUUID();
+        mId = user.getUid();
 
     }
 
@@ -48,11 +48,11 @@ public class User {
         mTextNumber = textNumber;
     }
 
-    public UUID getId() {
+    public String getId() {
         return mId;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         mId = id;
     }
 

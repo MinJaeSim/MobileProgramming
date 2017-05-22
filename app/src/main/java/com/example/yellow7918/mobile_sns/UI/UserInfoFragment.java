@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.yellow7918.mobile_sns.Model.UpLoader;
 import com.example.yellow7918.mobile_sns.Model.User;
 import com.example.yellow7918.mobile_sns.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ public class UserInfoFragment extends Fragment {
     private TextView mFriendNumTV;
     private TextView mTextNumTV;
 
-    public static UserInfoFragment newInstance(UUID uuid) {
+    public static UserInfoFragment newInstance(String uuid) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_USER_ID, uuid);
 
@@ -36,7 +37,7 @@ public class UserInfoFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID userId = (UUID) getArguments().getSerializable(ARG_USER_ID);
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mUser = UpLoader.getArticleUploadUser(userId);
     }
 
@@ -55,10 +56,10 @@ public class UserInfoFragment extends Fragment {
         mProfileTV.setText(mUser.getProfile());
 
         mFriendNumTV = (TextView) v.findViewById(R.id.friend_num);
-        mFriendNumTV.setText(mUser.getFriendNumber());
+        //mFriendNumTV.setText(mUser.getFriendNumber());
 
         mTextNumTV = (TextView) v.findViewById(R.id.text_num);
-        mTextNumTV.setText(mUser.getTextNumber());
+        //mTextNumTV.setText(mUser.getTextNumber());
 
         return v;
     }
