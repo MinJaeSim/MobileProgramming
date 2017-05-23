@@ -5,6 +5,8 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -53,6 +55,7 @@ public class ArticleAddActivity extends AppCompatActivity {
     private StorageReference ref;
     private String stringImageUrl;
     private ImageView mChoiceImageView;
+    private String absPath;
 
     private String generateTempFilename() {
         return new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
@@ -75,17 +78,11 @@ public class ArticleAddActivity extends AppCompatActivity {
                 break;
 
             case PICK_FROM_CAMERA:
-                //Bundle extras = data.getExtras();
-                imageUri = data.getData();
-
-                Log.i("AAAA", imageUri.toString());
-
-                //String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+generateTempFilename()+".jpg";
+                imageUri = galleryAdd();
 
                 Glide.with(ArticleAddActivity.this)
                         .load(imageUri)
                         .into(mChoiceImageView);
-
                 break;
         }
     }
@@ -196,39 +193,32 @@ public class ArticleAddActivity extends AppCompatActivity {
             try {
                 photoFile = createImageFile();
             } catch (IOException e) {
-
             }
-
             if (photoFile != null) {
-//                Uri contentUri = Uri.fromFile(photoFile);
-                Uri contentUri = null;
-                try {
-                    contentUri =
-                            FileProvider.getUriForFile
-                                    (getApplicationContext(),
-                            "com.example.yellow7918.mobile_sns.fileprovider",
-                            createImageFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,contentUri);
+                Uri contentUri = FileProvider.getUriForFile(this.getBaseContext(), "com.example.yellow7918.mobile_sns.fileprovider", photoFile);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
 
-                startActivityForResult(intent,PICK_FROM_CAMERA);
+                startActivityForResult(intent, PICK_FROM_CAMERA);
             }
         }
-
-        //String url = "temp_"+generateTempFilename()+".jpg";
-
-        //imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),url));
-
     }
 
     private File createImageFile() throws IOException {
-        String fileName = generateTempFilename()+".jpg";
+        String fileName = generateTempFilename();
         File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(fileName, ".jpg", storageDir);
 
-        File image = File.createTempFile(fileName,".jpg",storageDir);
-
+        absPath = image.getAbsolutePath();
         return image;
+    }
+
+    private Uri galleryAdd() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(absPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+
+        return contentUri;
     }
 }
