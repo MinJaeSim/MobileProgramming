@@ -15,7 +15,6 @@ import com.example.yellow7918.mobile_sns.Model.UpLoader;
 import com.example.yellow7918.mobile_sns.Model.User;
 import com.example.yellow7918.mobile_sns.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +39,12 @@ public class UserInfoFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        String userId = null;
+
+        if (getArguments() != null) {
+            userId = getArguments().getString("user_id");
+        }
+
         mUser = UpLoader.getArticleUploadUser(userId);
     }
 
@@ -53,7 +57,7 @@ public class UserInfoFragment extends Fragment {
 
         final Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "AmaticSC-Bold.ttf");
 
-        TextView mIdTV = (TextView) v.findViewById(R.id.my_id);
+        TextView mIdTV = (TextView) v.findViewById(R.id.uploader_id);
         mIdTV.setText(mUser.getName());
         mIdTV.setTypeface(type);
 
@@ -62,7 +66,6 @@ public class UserInfoFragment extends Fragment {
 
         final TextView mNumTextTV = (TextView) v.findViewById(R.id.user_text_number_view);
 
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -76,7 +79,7 @@ public class UserInfoFragment extends Fragment {
                         textNumber++;
                     }
                 }
-                mNumTextTV.setText(textNumber+"개");
+                mNumTextTV.setText(textNumber + "개");
             }
 
             @Override

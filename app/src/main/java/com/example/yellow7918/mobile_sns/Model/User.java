@@ -7,54 +7,54 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class User {
-    private String mName;
-    private String mEmail;
-    private String mProfile;
-    private String mId;
-    private int mTextNumber;
+    private String name;
+    private String email;
+    private String profile;
+    private String id;
+    private int textNumber;
 
     private FirebaseUser user;
 
     public User(String name) {
-        mName = name;
-        mTextNumber = 0;
+
+        this.name = name;
+        textNumber = 0;
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mEmail = user.getEmail();
-        mId = user.getUid();
-
+        email = user.getEmail();
+        id = user.getUid();
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public String getId() {
-        return mId;
+        return id;
     }
 
     public void setId(String id) {
-        mId = id;
+        this.id = id;
     }
 
     public void setProfile(String profile) {
-        mProfile = profile;
+        this.profile = profile;
     }
 
     public String getProfile() {
-        return mProfile;
+        return profile;
     }
 
     public int getTextNumber() {
-        return mTextNumber;
+        return textNumber;
     }
 
     public void setTextNumber(int num) {
-        mTextNumber = num;
+        textNumber = num;
     }
 
     public void increaseTextNumber() {
-        mTextNumber++;
+        textNumber++;
     }
 }

@@ -57,6 +57,12 @@ public class ArticleAddActivity extends AppCompatActivity {
     private ImageView mChoiceImageView;
     private String absPath;
 
+    private static String timestamp() {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("y년 M월 d일 hh:mm" + " 작성", Locale.KOREA);
+        return dateFormat.format(date);
+    }
+
     private String generateTempFilename() {
         return new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
     }
@@ -167,7 +173,7 @@ public class ArticleAddActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 stringImageUrl = taskSnapshot.getDownloadUrl().toString();
-                                model.upLoadArticle(name, stringImageUrl, tag);
+                                model.upLoadArticle(name, timestamp(),stringImageUrl, tag);
                             }
                         });
                     } catch (FileNotFoundException e) {

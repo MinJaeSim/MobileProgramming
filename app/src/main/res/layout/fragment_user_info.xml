@@ -9,7 +9,7 @@
         >
 
         <TextView
-            android:id="@+id/my_id"
+            android:id="@+id/uploader_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User ID"
@@ -24,7 +24,7 @@
             android:text="프로필"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:layout_below="@+id/my_id"
+            android:layout_below="@+id/uploader_id"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@+id/user_text_number_view" />
 
@@ -33,7 +33,7 @@
             android:layout_width="100dp"
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/my_id"
+            android:layout_below="@+id/uploader_id"
             android:text="게시글 수"
             android:textAlignment="center"
             android:textSize="24sp" />

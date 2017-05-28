@@ -2,19 +2,14 @@ package com.example.yellow7918.mobile_sns.Model;
 
 import android.util.Log;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.UUID;
-
 public class Article {
-    private String mName;
-    private final String mTimestamp;
-    private String mImageURL;
-    private String mTag;
+    private String name;
+    private String timeStamp;
+    private String imageURL;
+    private String tag;
 
     public Article() {
-        this("", "", "");
+        this("", "", "","");
     }
 
     public Article(String name, String timestamp) {
@@ -26,48 +21,30 @@ public class Article {
     }
 
     public Article(String name, String timestamp, String imageURL, String tag) {
-        mName = name;
-        mTimestamp = timestamp();
-        mImageURL = imageURL;
-        mTag = tag;
+        this.name = name;
+        timeStamp = timestamp;
+        this.imageURL = imageURL;
+        this.tag = tag;
     }
 
     public String getName() {
-        return mName;
-    }
-
-    public void setName(String name) {
-        mName = name;
+        return name;
     }
 
     public String getImageURL() {
-        return mImageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        mImageURL = imageURL;
+        return imageURL;
     }
 
     public String getTag() {
-        return mTag;
+        return tag;
     }
 
-    public void setTag(String tag) {
-        mTag = tag;
-    }
-
-    public static Article newArticle(String name, String imageURL, String tag) {
-        return new Article(name, timestamp(), imageURL, tag);
-    }
-
-    private static String timestamp() {
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("y년 M월 d일 hh:mm" + " 작성", Locale.KOREA);
-        return dateFormat.format(date);
+    public static Article newArticle(String name, String timestamp, String imageURL, String tag) {
+        return new Article(name, timestamp, imageURL, tag);
     }
 
     public String getTimeStamp() {
-        return mTimestamp;
+        return timeStamp;
     }
 }
 

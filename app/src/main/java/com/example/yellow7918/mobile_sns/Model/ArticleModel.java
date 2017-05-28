@@ -32,12 +32,10 @@ public class ArticleModel {
 
                 for (DataSnapshot e : children) {
                     Article article = e.getValue(Article.class);
+
                     newArticles.add(article);
                     UpLoader.getInstance().add(new User(article.getName()));
                 }
-
-//                for(int i =0; i< UpLoader.getInstance().size(); i++)
-//                    Log.i("AAA",UpLoader.getInstance().get(UpLoader.getInstance().size()-1).getId());
 
                 articles = newArticles;
                 if (onDataChangedListener != null) {
@@ -52,9 +50,9 @@ public class ArticleModel {
         });
     }
 
-    public void upLoadArticle(String name, String url, String tag) {
+    public void upLoadArticle(String name, String timestamp, String url, String tag) {
         DatabaseReference childRef = ref.push();
-        childRef.setValue(Article.newArticle(name, url, tag));
+        childRef.setValue(Article.newArticle(name, timestamp, url, tag));
     }
 
     public String getName(int position) {

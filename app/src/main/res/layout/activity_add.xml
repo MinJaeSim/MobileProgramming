@@ -25,7 +25,7 @@
         android:layout_below="@+id/choice_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="해쉬태그 작성"
+        android:text="태그글 작성"
         android:textAlignment="center"
         android:textSize="24sp"
         />

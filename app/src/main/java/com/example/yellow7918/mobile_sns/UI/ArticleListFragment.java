@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,12 +54,12 @@ public class ArticleListFragment extends Fragment {
                 String timeStamp = model.getTimeStamp(position);
 
                 User user = users.get(position);
-                holder.bindUser(user);
 
+                holder.bindUser(user);
 
                 holder.setName(name);
                 holder.setImage(imageURL);
-                holder.setTagAndTimeStamp(timeStamp,tag);
+                holder.setTagAndTimeStamp(timeStamp, tag);
             }
 
             @Override
@@ -71,6 +72,8 @@ public class ArticleListFragment extends Fragment {
             @Override
             public void onDataChanged() {
                 mRecyclerView.getAdapter().notifyDataSetChanged();
+                int count = mRecyclerView.getAdapter().getItemCount();
+                mRecyclerView.scrollToPosition(count - 1);
             }
         });
         return view;
