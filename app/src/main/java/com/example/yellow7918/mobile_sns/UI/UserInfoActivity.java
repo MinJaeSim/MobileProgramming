@@ -30,7 +30,7 @@ public class UserInfoActivity extends FragmentActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null) {
-            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
             fragment = UserInfoFragment.newInstance(userId);
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)

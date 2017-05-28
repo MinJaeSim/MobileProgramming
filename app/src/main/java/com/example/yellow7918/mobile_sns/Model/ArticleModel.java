@@ -1,5 +1,7 @@
 package com.example.yellow7918.mobile_sns.Model;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,9 @@ public class ArticleModel {
                     newArticles.add(article);
                     UpLoader.getInstance().add(new User(article.getName()));
                 }
+
+//                for(int i =0; i< UpLoader.getInstance().size(); i++)
+//                    Log.i("AAA",UpLoader.getInstance().get(UpLoader.getInstance().size()-1).getId());
 
                 articles = newArticles;
                 if (onDataChangedListener != null) {

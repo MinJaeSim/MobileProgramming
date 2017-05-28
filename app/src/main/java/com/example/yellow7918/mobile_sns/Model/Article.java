@@ -1,5 +1,7 @@
 package com.example.yellow7918.mobile_sns.Model;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -7,7 +9,7 @@ import java.util.UUID;
 
 public class Article {
     private String mName;
-    private String mTimestamp;
+    private final String mTimestamp;
     private String mImageURL;
     private String mTag;
 
@@ -20,7 +22,7 @@ public class Article {
     }
 
     public Article(String name, String timestamp, String imageURL) {
-        this(name, timestamp, "", "");
+        this(name, timestamp, imageURL, "");
     }
 
     public Article(String name, String timestamp, String imageURL, String tag) {

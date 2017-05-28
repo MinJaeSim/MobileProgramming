@@ -53,13 +53,12 @@ public class ArticleListFragment extends Fragment {
                 String timeStamp = model.getTimeStamp(position);
 
                 User user = users.get(position);
-
                 holder.bindUser(user);
 
 
                 holder.setName(name);
                 holder.setImage(imageURL);
-                holder.setTimeStampAndTag(timeStamp, tag);
+                holder.setTagAndTimeStamp(timeStamp,tag);
             }
 
             @Override
@@ -95,7 +94,7 @@ public class ArticleListFragment extends Fragment {
             mNameTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = UserInfoActivity.newIntent(getActivity(), mUser.getId());
+                    Intent intent = UserInfoActivity.newIntent(getActivity(), mUser.getName());
                     startActivity(intent);
                 }
             });
@@ -117,7 +116,7 @@ public class ArticleListFragment extends Fragment {
                     .into(mImageView);
         }
 
-        public void setTimeStampAndTag(String timeStamp, String tag) {
+        public void setTagAndTimeStamp(String timeStamp, String tag) {
             mTagTextView.setText(timeStamp + " \n\n" + tag);
         }
     }
