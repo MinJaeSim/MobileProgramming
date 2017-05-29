@@ -57,6 +57,8 @@ public class ArticleAddActivity extends AppCompatActivity {
     private ImageView mChoiceImageView;
     private String absPath;
 
+    private EditText mHashEdit;
+
     private static String timestamp() {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("y년 M월 d일 hh:mm" + " 작성", Locale.KOREA);
@@ -103,7 +105,8 @@ public class ArticleAddActivity extends AppCompatActivity {
 
         Button mChoiceButton = (Button) findViewById(R.id.choice_pic);
         mChoiceImageView = (ImageView) findViewById(R.id.choice_imageView);
-        final EditText mHashEdit = (EditText) findViewById(R.id.edit_hash);
+        mHashEdit = (EditText) findViewById(R.id.edit_hash);
+        //mHashEdit.setVisibility(View.GONE);
         final Button mWriteButton = (Button) findViewById(R.id.write_article);
 
         mChoiceButton.setOnClickListener(new View.OnClickListener() {

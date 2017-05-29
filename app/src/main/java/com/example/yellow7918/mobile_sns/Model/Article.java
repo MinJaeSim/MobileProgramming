@@ -9,7 +9,7 @@ public class Article {
     private String tag;
 
     public Article() {
-        this("", "", "","");
+        this("", "", "", "");
     }
 
     public Article(String name, String timestamp) {
@@ -47,4 +47,3 @@ public class Article {
         return timeStamp;
     }
 }
-

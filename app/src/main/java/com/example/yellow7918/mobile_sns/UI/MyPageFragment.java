@@ -1,10 +1,7 @@
 package com.example.yellow7918.mobile_sns.UI;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,8 +16,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.yellow7918.mobile_sns.Model.Article;
-import com.example.yellow7918.mobile_sns.Model.UpLoader;
-import com.example.yellow7918.mobile_sns.Model.User;
 import com.example.yellow7918.mobile_sns.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,11 +38,11 @@ public class MyPageFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_mypage, container, false);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
+        final FirebaseUser currentUser = auth.getCurrentUser();
 
-        final User user = UpLoader.getArticleUploadUser(currentUser.getDisplayName());
+        //final User user = UpLoader.getArticleUploadUser(currentUser.getDisplayName());
 
-        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "AmaticSC-Bold.ttf");
+        Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "NanumBarunGothic.otf");
 
         TextView myID = (TextView) v.findViewById(R.id.my_id);
         myID.setText(currentUser.getDisplayName() + " 의 프로필");
@@ -68,7 +63,7 @@ public class MyPageFragment extends Fragment {
                 int textNumber = 0;
                 for (DataSnapshot e : children) {
                     Article article = e.getValue(Article.class);
-                    if (article.getName().equals(user.getName())) {
+                    if (article.getName().equals(currentUser.getDisplayName())) {
                         textNumber++;
                         uriList.add(article.getImageURL());
                     }
@@ -78,7 +73,7 @@ public class MyPageFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Firebase Error", databaseError.getMessage());
             }
         });
 
@@ -124,7 +119,6 @@ public class MyPageFragment extends Fragment {
                 Glide.with(MyPageFragment.this)
                         .load(imageIDs.get(position))
                         .into(imageView);
-
             }
             return imageView;
         }

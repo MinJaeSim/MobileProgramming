@@ -41,6 +41,4 @@ public class UserInfoActivity extends FragmentActivity {
                     .commit();
         }
     }
-
-
 }

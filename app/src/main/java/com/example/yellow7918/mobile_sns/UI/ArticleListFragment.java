@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +90,7 @@ public class ArticleListFragment extends Fragment {
             super(itemView);
 
             mNameTextView = (TextView) itemView.findViewById(R.id.list_item_uploader_id);
-            Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "AmaticSC-Bold.ttf");
+            Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "NanumBarunGothic.otf");
             mNameTextView.setTypeface(type);
 
             mNameTextView.setOnClickListener(new View.OnClickListener() {
@@ -123,5 +122,4 @@ public class ArticleListFragment extends Fragment {
             mTagTextView.setText(timeStamp + " \n\n" + tag);
         }
     }
-
 }

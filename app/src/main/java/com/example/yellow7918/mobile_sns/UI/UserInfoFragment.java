@@ -64,7 +64,7 @@ public class UserInfoFragment extends Fragment {
 
         textNumber = 0;
 
-        final Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "AmaticSC-Bold.ttf");
+        final Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "NanumBarunGothic.otf");
 
         TextView mIdTV = (TextView) v.findViewById(R.id.uploader_id);
         mIdTV.setText(mUser.getName());

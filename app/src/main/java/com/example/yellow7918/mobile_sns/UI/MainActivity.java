@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbar.setTitle("");
         mTitle = (TextView) mToolbar.findViewById(R.id.toolbarTitle);
 
-        Typeface type = Typeface.createFromAsset(this.getAssets(), "AmaticSC-Bold.ttf");
+        Typeface type = Typeface.createFromAsset(this.getAssets(), "NanumBarunGothicBold.otf");
         mTitle.setTypeface(type);
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
