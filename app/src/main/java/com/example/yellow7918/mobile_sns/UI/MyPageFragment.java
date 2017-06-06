@@ -40,8 +40,6 @@ public class MyPageFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = auth.getCurrentUser();
 
-        //final User user = UpLoader.getArticleUploadUser(currentUser.getDisplayName());
-
         Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "NanumBarunGothic.otf");
 
         TextView myID = (TextView) v.findViewById(R.id.my_id);
