@@ -22,7 +22,7 @@
             android:id="@+id/my_profile"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:text="프로필"
+            android:text="올린 게시글 수 : "
             android:textAlignment="center"
             android:textSize="24sp"
             android:layout_below="@+id/my_id"
@@ -35,7 +35,7 @@
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/my_id"
-            android:text="게시글 수"
+            android:text=""
             android:textAlignment="center"
             android:textSize="24sp" />
 

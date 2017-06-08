@@ -19,7 +19,6 @@ import com.example.yellow7918.mobile_sns.Model.Article;
 import com.example.yellow7918.mobile_sns.Model.UpLoader;
 import com.example.yellow7918.mobile_sns.Model.User;
 import com.example.yellow7918.mobile_sns.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,9 +68,6 @@ public class UserInfoFragment extends Fragment {
         TextView mIdTV = (TextView) v.findViewById(R.id.uploader_id);
         mIdTV.setText(mUser.getName());
         mIdTV.setTypeface(type);
-
-        TextView mProfileTV = (TextView) v.findViewById(R.id.user_profile);
-        //mProfileTV.setText(mUser.getProfile());
 
         final TextView mNumTextTV = (TextView) v.findViewById(R.id.user_text_number_view);
 

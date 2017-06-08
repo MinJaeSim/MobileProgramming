@@ -30,7 +30,7 @@ import java.util.List;
 
 public class MyPageFragment extends Fragment {
 
-    List<String> uriList = new ArrayList();
+    private List<String> uriList = new ArrayList();
 
     @Nullable
     @Override
@@ -47,7 +47,6 @@ public class MyPageFragment extends Fragment {
         myID.setTypeface(type);
 
         TextView myProfile = (TextView) v.findViewById(R.id.my_profile);
-        //myProfile.setText(user.getProfile());
         myProfile.setTypeface(type);
 
         final TextView myTextNum = (TextView) v.findViewById(R.id.my_text_number_view);

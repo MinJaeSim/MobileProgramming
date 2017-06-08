@@ -52,10 +52,6 @@ public class ArticleListFragment extends Fragment {
                 String tag = model.getTag(position);
                 String timeStamp = model.getTimeStamp(position);
 
-                User user = users.get(position);
-
-                holder.bindUser(user);
-
                 holder.setName(name);
                 holder.setImage(imageURL);
                 holder.setTagAndTimeStamp(timeStamp, tag);
@@ -84,7 +80,6 @@ public class ArticleListFragment extends Fragment {
         private TextView mNameTextView;
         private TextView mTagTextView;
         private ImageView mImageView;
-        private User mUser;
 
         public ArticleHolder(View itemView) {
             super(itemView);
@@ -93,23 +88,19 @@ public class ArticleListFragment extends Fragment {
             Typeface type = Typeface.createFromAsset(getActivity().getAssets(), "NanumBarunGothic.otf");
             mNameTextView.setTypeface(type);
 
-            mNameTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = UserInfoActivity.newIntent(getActivity(), mUser.getName());
-                    startActivity(intent);
-                }
-            });
             mTagTextView = (TextView) itemView.findViewById(R.id.list_item_uploader_comment);
             mImageView = (ImageView) itemView.findViewById(R.id.list_item_uploader_image);
         }
 
-        public void bindUser(User user) {
-            mUser = user;
-        }
-
-        public void setName(String text) {
+        public void setName(final String text) {
             mNameTextView.setText(text);
+            mNameTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = UserInfoActivity.newIntent(getActivity(), text);
+                    startActivity(intent);
+                }
+            });
         }
 
         public void setImage(String imageUrl) {

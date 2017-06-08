@@ -54,7 +54,7 @@ public class EnrollActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        Typeface type = Typeface.createFromAsset(this.getAssets(), "AmaticSC-Bold.ttf");
+        Typeface type = Typeface.createFromAsset(this.getAssets(), "NanumBarunGothicBold.otf");
         mEnrollText.setTypeface(type);
 
 
