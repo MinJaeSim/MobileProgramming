@@ -25,6 +25,8 @@ import java.util.List;
 
 public class SearchActivity extends FragmentActivity {
     private static final String ARG_USER_ID = "user_id";
+    private List<String> urlList = new ArrayList<String>();
+    private Bundle args = new Bundle();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,39 +40,39 @@ public class SearchActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 final String searchText = searchEditText.getText().toString();
+                if (searchText.length() > 0) {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference ref = database.getReference();
+                    args.clear();
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference();
-
-                final List<String> urlList = new ArrayList<String>();
-
-                final Bundle args = new Bundle();
-
-                ref.orderByChild("name").equalTo(searchText).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                        for (DataSnapshot e : children) {
-                            Article article = e.getValue(Article.class);
-                            urlList.add(article.getImageURL());
+                    ref.orderByChild("name").equalTo(searchText).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                            urlList.clear();
+                            for (DataSnapshot e : children) {
+                                Article article = e.getValue(Article.class);
+                                urlList.add(article.getImageURL());
+                            }
                         }
-                        args.putSerializable(ARG_USER_ID, (Serializable) urlList);
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("Firebase Error", databaseError.getMessage());
-                    }
-                });
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.d("Firebase Error", databaseError.getMessage());
+                        }
+                    });
+                }
             }
         });
 
-
+        args.putSerializable(ARG_USER_ID, (Serializable) urlList);
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.search_view_container);
+        Log.i("AAAA","test");
 
         if (fragment == null) {
             fragment = new SearchFragment();
+            fragment.setArguments(args);
             fm.beginTransaction().add(R.id.search_view_container, fragment).commit();
         }
     }

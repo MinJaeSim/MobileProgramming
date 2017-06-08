@@ -38,17 +38,12 @@
         android:textAlignment="center"
         android:textSize="32sp" />
 
-    <GridView
+    <FrameLayout
         android:id="@+id/search_view_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/result_view"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:verticalSpacing="10dp" />
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
