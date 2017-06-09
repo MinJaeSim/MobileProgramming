@@ -1,4 +1,4 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,9 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.yellow7918.mobile_sns.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFragment extends Fragment {
@@ -30,18 +28,22 @@ public class SearchFragment extends Fragment {
 
         uriList = getArguments().getStringArrayList("user_id");
 
+        for (String s : uriList) {
+            Log.i("AAAA", "test : " + s);
+        }
+
         GridView gridViewImages = (GridView) v.findViewById(R.id.search_grid_view_container);
         ImageAdapter imageGridAdapter = new ImageAdapter(this.getContext(), uriList);
         gridViewImages.setAdapter(imageGridAdapter);
-        Log.i("AAAA","1234");
+
         return v;
     }
 
 
     public class ImageAdapter extends BaseAdapter {
-        Context context = null;
+        private Context context;
 
-        List<String> imageIDs = null;
+        private List<String> imageIDs;
 
         public ImageAdapter(Context context, List imageIDs) {
             this.context = context;
@@ -49,7 +51,7 @@ public class SearchFragment extends Fragment {
         }
 
         public int getCount() {
-            return (null != imageIDs) ? imageIDs.size() : 0;
+            return imageIDs.size();
         }
 
         public Object getItem(int position) {

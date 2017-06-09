@@ -1,12 +1,10 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -17,17 +15,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.yellow7918.mobile_sns.Model.ArticleModel;
-import com.example.yellow7918.mobile_sns.Model.UpLoader;
-import com.example.yellow7918.mobile_sns.Model.User;
-import com.example.yellow7918.mobile_sns.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;

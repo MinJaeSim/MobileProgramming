@@ -1,8 +1,7 @@
-package com.example.yellow7918.mobile_sns.Model;
+package com.example.yellow7918.mobile_sns;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class UpLoader {
 

@@ -1,4 +1,4 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -15,10 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.yellow7918.mobile_sns.Model.Article;
-import com.example.yellow7918.mobile_sns.Model.UpLoader;
-import com.example.yellow7918.mobile_sns.Model.User;
-import com.example.yellow7918.mobile_sns.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -86,17 +82,17 @@ public class UserInfoFragment extends Fragment {
                     }
                 }
                 mNumTextTV.setText(textNumber + "개");
+
+                GridView gridViewImages = (GridView) v.findViewById(R.id.user_gridViewImages);
+                UserInfoFragment.ImageAdapter imageGridAdapter = new UserInfoFragment.ImageAdapter(getContext(), uriList);
+                gridViewImages.setAdapter(imageGridAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Firebase Error", databaseError.getMessage());
             }
         });
-
-        GridView gridViewImages = (GridView) v.findViewById(R.id.user_gridViewImages);
-        UserInfoFragment.ImageAdapter imageGridAdapter = new UserInfoFragment.ImageAdapter(this.getContext(), uriList);
-        gridViewImages.setAdapter(imageGridAdapter);
 
         return v;
     }

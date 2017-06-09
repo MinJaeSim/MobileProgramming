@@ -1,4 +1,4 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-
-import com.example.yellow7918.mobile_sns.R;
 
 public class MyPageActivity extends FragmentActivity {
     @Override

@@ -1,6 +1,4 @@
-package com.example.yellow7918.mobile_sns.Model;
-
-import android.util.Log;
+package com.example.yellow7918.mobile_sns;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

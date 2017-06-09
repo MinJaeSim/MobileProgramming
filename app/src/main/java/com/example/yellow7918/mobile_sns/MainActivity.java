@@ -1,4 +1,4 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 
 import android.content.DialogInterface;
@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.yellow7918.mobile_sns.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

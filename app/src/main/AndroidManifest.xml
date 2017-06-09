@@ -18,7 +18,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.LoginActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,27 +26,27 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.UserInfoActivity">
+        <activity android:name=".UserInfoActivity">
 
         </activity>
 
-        <activity android:name=".UI.MainActivity">
+        <activity android:name=".MainActivity">
 
         </activity>
 
-        <activity android:name=".UI.ArticleAddActivity">
+        <activity android:name=".ArticleAddActivity">
 
         </activity>
 
-        <activity android:name=".UI.EnrollActivity">
+        <activity android:name=".EnrollActivity">
 
         </activity>
 
-        <activity android:name=".UI.MyPageActivity">
+        <activity android:name=".MyPageActivity">
 
         </activity>
 
-        <activity android:name=".UI.SearchActivity">
+        <activity android:name=".SearchActivity">
 
         </activity>
 

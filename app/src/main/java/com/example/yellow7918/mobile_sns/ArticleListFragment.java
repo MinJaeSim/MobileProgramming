@@ -1,4 +1,4 @@
-package com.example.yellow7918.mobile_sns.UI;
+package com.example.yellow7918.mobile_sns;
 
 
 import android.content.Intent;
@@ -15,11 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.yellow7918.mobile_sns.Model.ArticleModel;
-import com.example.yellow7918.mobile_sns.Model.OnDataChangedListener;
-import com.example.yellow7918.mobile_sns.Model.UpLoader;
-import com.example.yellow7918.mobile_sns.R;
-import com.example.yellow7918.mobile_sns.Model.User;
 
 import java.util.List;
 
@@ -30,7 +25,6 @@ public class ArticleListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_article_list, container, false);
-        final List<User> users = UpLoader.getInstance();
         final RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.article_recycle_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
